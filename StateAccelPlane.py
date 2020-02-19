@@ -88,7 +88,7 @@ while True:
 
     my_servo.angle = NewAngle
 
-
+#Looks like this code has been updated a bit since we last talked. Let me know if there's anything I can do to help.
 
 while(True):
     updateSystem()
