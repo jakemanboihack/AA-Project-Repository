@@ -60,34 +60,32 @@ UnknownConstant = 1
 
 while True:
 
+   while True:
+    
     AccelVolt = (get_voltage(analog_in))
 
-    currentOutput = my_servo.angle
-    #print(currentOutput)
+    NewOutput = my_servo.angle
+   
+    error = setpoint - AccelVolt
+   
+    NewOutput = error*Constant
 
-    #error = setpoint - AccelVolt
+    NewAngle =  my_servo.angle + NewOutput
 
-    #output = error*UnknownConstant
-
-
-    if(AccelVolt > setpoint):
-        currentOutput += 0.5
-    elif(AccelVolt < setpoint):
-        currentOutput -= 0.5
-
-    NewAngle =  currentOutput
-
+    
     if(NewAngle > 180):
         NewAngle= 180
     elif(NewAngle < 0):
         NewAngle = 0
 
-
-    #print((get_voltage(analog_in),))
+ 
     time.sleep(0.01)
 
     my_servo.angle = NewAngle
 
+
+    #print((get_voltage(analog_in),))
+   
 #Looks like this code has been updated a bit since we last talked. Let me know if there's anything I can do to help.
 
 while(True):
